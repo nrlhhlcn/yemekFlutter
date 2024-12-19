@@ -90,7 +90,7 @@ class _SepetSayfaState extends State<SepetSayfa> {
                   ),
                 ),
                 OutlinedButton(
-                    onPressed:sepeteEkle,
+                    onPressed: sepeteEkle,
                     style: OutlinedButton.styleFrom(
                         backgroundColor: appbarRengi,
                         foregroundColor: yaziRengi),

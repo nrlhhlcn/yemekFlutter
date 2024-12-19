@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yemek/renkler.dart';
-import 'package:yemek/sepet_sayfa.dart';
+import 'package:yemek/yemek_detay.dart';
 import 'package:yemek/yemekler.dart';
 
 class AnaSayfa extends StatefulWidget {
