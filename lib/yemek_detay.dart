@@ -38,7 +38,10 @@ class _SepetSayfaState extends State<SepetSayfa> {
                 ),
                 Text(
                   widget.yemek.isim,
-                  style: TextStyle(color: yaziRengi, fontSize: 23),
+                  style: TextStyle(
+                      color: appbarRengi,
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold),
                 ),
                 Text(
                   "${widget.yemek.kalori.toString()} kalori",
@@ -89,7 +92,7 @@ class _SepetSayfaState extends State<SepetSayfa> {
                     ],
                   ),
                 ),
-               OutlinedButton(
+                OutlinedButton(
                     onPressed: sepeteEkle,
                     style: OutlinedButton.styleFrom(
                         backgroundColor: appbarRengi,
@@ -106,9 +109,59 @@ class _SepetSayfaState extends State<SepetSayfa> {
 
   void sepeteEkle() {
     if (sayac == 0) {
-      print("Sepet 0 olamaz");
+      print("object");
     } else {
-      print("Sepete ${sayac} tane ${widget.yemek.isim} eklendi");
+      showDialog(
+          barrierDismissible: false,
+          context: context,
+          builder: (builder) {
+            return AlertDialog(
+              title: Text(
+                "Sepete Eklemek istiyor musunuz?",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontWeight: FontWeight.bold, color: yaziRengi),
+              ),
+              backgroundColor: temaRengi,
+              content: Row(
+                children: [
+                  Image.asset(
+                    widget.yemek.resimYolu,
+                    width: 100,
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Expanded(
+                    child: Text(
+                      "${sayac} tane ${widget.yemek.isim} sepete eklenecek onaylıyor musunuz?",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: yaziRengi),
+                      overflow:
+                          TextOverflow.ellipsis, // Metin çok uzunsa kesilir.
+                      maxLines: 3, // Maksimum 2 satır gösterir.
+                    ),
+                  ),
+                ],
+              ),
+              actions: [
+                OutlinedButton(
+                  onPressed: () {
+                    snackbar();
+                    Navigator.of(context).pop();
+                    Navigator.of(context).pop();
+                  },
+                  style: OutlinedButton.styleFrom(
+                      backgroundColor: appbarRengi, foregroundColor: yaziRengi),
+                  child: const Text("Evet"),
+                ),
+                TextButton(
+                  onPressed: () {},
+                  style: TextButton.styleFrom(foregroundColor: appbarRengi),
+                  child: const Text("Hayır"),
+                ),
+              ],
+            );
+          });
     }
   }
 
@@ -130,5 +183,23 @@ class _SepetSayfaState extends State<SepetSayfa> {
         sayac--;
       }
     });
+  }
+
+  void snackbar() {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          "Sepete Başarıyla Eklendi ",
+          style: TextStyle(color: yaziRengi),
+        ),
+        backgroundColor: appbarRengi,
+        action: SnackBarAction(
+          label: "Tamam",
+          onPressed: () {},
+          textColor: yaziRengi,
+        ),
+        duration: const Duration(seconds: 2),
+      ),
+    );
   }
 }
