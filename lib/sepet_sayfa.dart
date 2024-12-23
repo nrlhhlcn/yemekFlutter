@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yemek/renkler.dart';
 
 class SepetSayfa extends StatefulWidget {
   const SepetSayfa({super.key});
@@ -10,8 +11,20 @@ class SepetSayfa extends StatefulWidget {
 class _SepetSayfaState extends State<SepetSayfa> {
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text("Sepet Sayfası Oluşturldu"),
+    return Center(
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            "Septe Sayfası",
+            style: TextStyle(color: yaziRengi),
+          ),
+          backgroundColor: appbarRengi,
+          centerTitle: true,
+        ),
+        body: const Center(
+          child: Text("Sepet Sayfası"),
+        ),
+      ),
     );
   }
 }

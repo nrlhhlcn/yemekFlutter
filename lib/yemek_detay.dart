@@ -109,7 +109,15 @@ class _SepetSayfaState extends State<SepetSayfa> {
 
   void sepeteEkle() {
     if (sayac == 0) {
-      print("object");
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+            "Sepete 0 tane ürün eklenemez",
+            style: TextStyle(fontSize: 18),
+          ),
+          backgroundColor: Colors.red,
+        ),
+      );
     } else {
       showDialog(
           barrierDismissible: false,
@@ -155,7 +163,9 @@ class _SepetSayfaState extends State<SepetSayfa> {
                   child: const Text("Evet"),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   style: TextButton.styleFrom(foregroundColor: appbarRengi),
                   child: const Text("Hayır"),
                 ),
