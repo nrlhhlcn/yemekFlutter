@@ -39,11 +39,14 @@ class _AnaSayfaState extends State<AnaSayfa> {
               },
               child: Column(
                 children: [
-                  Image.asset(
-                    yemek.resimYolu,
-                    width: 120,
-                    height: 120,
-                    fit: BoxFit.cover,
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: Image.asset(
+                      yemek.resimYolu,
+                      width: 120,
+                      height: 120,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                   const SizedBox(height: 8),
                   Text(

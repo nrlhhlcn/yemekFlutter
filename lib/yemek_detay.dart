@@ -17,94 +17,98 @@ class _SepetSayfaState extends State<SepetSayfa> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: temaRengi,
-        appBar: AppBar(
-          title: Text(
-            "Yemek Yeeğ",
-            style: TextStyle(fontSize: 25, color: yaziRengi),
-          ),
-          centerTitle: true,
-          backgroundColor: appbarRengi,
+      backgroundColor: temaRengi,
+      appBar: AppBar(
+        title: Text(
+          "Yemek Yeeğ",
+          style: TextStyle(fontSize: 25, color: yaziRengi),
         ),
-        body: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(widget.yemek.resimYolu),
-                const SizedBox(
-                  height: 12,
-                ),
-                Text(
-                  widget.yemek.isim,
-                  style: TextStyle(
-                      color: appbarRengi,
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  "${widget.yemek.kalori.toString()} kalori",
-                  style: TextStyle(color: yaziRengi, fontSize: 18),
-                ),
-                for (var i in widget.yemek.malzemeler)
-                  Text(
-                    i,
-                    style: TextStyle(color: yaziRengi, fontSize: 18),
-                  ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      GestureDetector(
-                        onTap: azalt,
-                        child: Padding(
-                          padding: const EdgeInsets.only(bottom: 20, right: 10),
-                          child: Icon(
-                            Icons.minimize_rounded,
-                            size: 35,
-                            color: yaziRengi,
-                          ),
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: arttir,
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 10),
-                          child: Icon(
-                            Icons.add,
-                            size: 35,
-                            color: yaziRengi,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      Text(
-                        "${sayac} ",
-                        style: TextStyle(
-                          fontSize: 23,
-                          color: yaziRengi,
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                OutlinedButton(
-                    onPressed: sepeteEkle,
-                    style: OutlinedButton.styleFrom(
-                        backgroundColor: appbarRengi,
-                        foregroundColor: yaziRengi),
-                    child: const Text(
-                      "Sepete Ekle",
-                      style: TextStyle(fontSize: 22),
-                    ))
-              ],
+        centerTitle: true,
+        backgroundColor: appbarRengi,
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ClipRRect(
+              borderRadius: const BorderRadius.only(
+                  bottomLeft: Radius.circular(50),
+                  bottomRight: Radius.circular(50)),
+              child: Image.asset(
+                widget.yemek.resimYolu,
+              ),
             ),
-          ),
-        ));
+            const SizedBox(
+              height: 12,
+            ),
+            Text(
+              widget.yemek.isim,
+              style: TextStyle(
+                  color: appbarRengi,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold),
+            ),
+            Text(
+              "${widget.yemek.kalori.toString()} kalori",
+              style: TextStyle(color: yaziRengi, fontSize: 18),
+            ),
+            for (var i in widget.yemek.malzemeler)
+              Text(
+                i,
+                style: TextStyle(color: yaziRengi, fontSize: 18),
+              ),
+            Padding(
+              padding: const EdgeInsets.only(right: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  GestureDetector(
+                    onTap: azalt,
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 20, right: 10),
+                      child: Icon(
+                        Icons.minimize_rounded,
+                        size: 35,
+                        color: yaziRengi,
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: arttir,
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: Icon(
+                        Icons.add,
+                        size: 35,
+                        color: yaziRengi,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  Text(
+                    "${sayac} ",
+                    style: TextStyle(
+                      fontSize: 23,
+                      color: yaziRengi,
+                    ),
+                  )
+                ],
+              ),
+            ),
+            OutlinedButton(
+                onPressed: sepeteEkle,
+                style: OutlinedButton.styleFrom(
+                    backgroundColor: appbarRengi, foregroundColor: yaziRengi),
+                child: const Text(
+                  "Sepete Ekle",
+                  style: TextStyle(fontSize: 22),
+                ))
+          ],
+        ),
+      ),
+    );
   }
 
   void sepeteEkle() {
