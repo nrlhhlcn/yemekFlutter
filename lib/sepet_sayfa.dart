@@ -13,6 +13,7 @@ class _SepetSayfaState extends State<SepetSayfa> {
   Widget build(BuildContext context) {
     return Center(
       child: Scaffold(
+        backgroundColor: temaRengi,
         appBar: AppBar(
           title: Text(
             "Septe Sayfası",
@@ -21,8 +22,11 @@ class _SepetSayfaState extends State<SepetSayfa> {
           backgroundColor: appbarRengi,
           centerTitle: true,
         ),
-        body: const Center(
-          child: Text("Sepet Sayfası"),
+        body: Center(
+          child: Text(
+            "Sepet Sayfası",
+            style: TextStyle(color: yaziRengi),
+          ),
         ),
       ),
     );

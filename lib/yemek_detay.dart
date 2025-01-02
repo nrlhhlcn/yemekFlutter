@@ -122,6 +122,7 @@ class _SepetSayfaState extends State<SepetSayfa> {
           backgroundColor: Colors.red,
         ),
       );
+      
     } else {
       showDialog(
           barrierDismissible: false,
